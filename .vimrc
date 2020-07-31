@@ -109,9 +109,15 @@ inoremap <leader>n <esc>
 
 " w : save
 " q : quit
+" qa : exit vim,unless there are some buffers which have been changed
 " q! : quit without save
-nnoremap <leader>wq <esc>:wq!<cr>
-nnoremap <leader>q <esc>:q!<cr>
+nnoremap <leader>x :wq!<cr>
+nnoremap <leader>q :qa!<cr>
+
+" 会话,和profile里的alias搭配使用,比如
+" alias vi="/usr/bin/vim"
+" alias vis="/usr/bin/vim -S ~/.vim/yanjc.session"
+nnoremap <leader>mks :mksession! ~/.vim/yanjc.session<cr>
 
 " plugin ctags
 set tags=tags;
