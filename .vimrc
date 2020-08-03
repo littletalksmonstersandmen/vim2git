@@ -8,7 +8,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -16,25 +16,30 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 " 终端开启256色支持
 set t_Co=256 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#formatter = 'default'
-" tabline中buffer显示编号
-let g:airline#extensions#tabline#buffer_nr_show = 0
-let g:airline#extensions#tabline#fnametruncate = 16
-let g:airline#extensions#tabline#fnamecollapse = 2
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-" set laststatus=2
-
 " 使用powerline打过补丁的字体
 let g:airline_powerline_fonts = 1
-" tabline中当前buffer两端的分隔字符
-" let g:airline#extensions#tabline#left_sep = ' '
-" tabline中未激活buffer两端的分隔字符
-" let g:airline#extensions#tabline#left_alt_sep = ' '
 
+" Display the statusline in the tabline (first top line)
+" let g:airline_statusline_ontop = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+" configure whether buffer numbers should be shown
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" configure collapsing parent directories in buffer name
+let g:airline#extensions#tabline#fnamecollapse = 1
+" configure truncating non-active buffer names to specified length
+let g:airline#extensions#tabline#fnametruncate = 10
+
+nnoremap <leader>1 :b1<cr>
+nnoremap <leader>2 :b2<cr>
+nnoremap <leader>3 :b3<cr>
+nnoremap <leader>4 :b4<cr>
+nnoremap <leader>5 :b5<cr>
+nnoremap <leader>6 :b6<cr>
+nnoremap <leader>7 :b7<cr>
+nnoremap <leader>8 :b8<cr>
+nnoremap <leader>9 :b9<cr>
 " 使用tab键快速切换buffers
 nnoremap <tab> :bn<cr>
 
@@ -120,6 +125,7 @@ nnoremap <leader>q :qa!<cr>
 nnoremap <leader>mks :mksession! ~/.vim/yanjc.session<cr>
 
 " plugin ctags
-set tags=tags;
+set tags=tags
+set tags+=/www/wwwroot/tags
 set autochdir
 nnoremap <silent> <leader>; <C-]>
