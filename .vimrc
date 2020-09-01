@@ -62,7 +62,7 @@ let Tlist_WinWidt = 25
 Plugin 'The-NERD-tree'
 "NERDTree 配置:F2快捷键显示当前目录树
 nnoremap <F8> :NERDTreeToggle<CR>
-let NERDTreeWinSize=25 
+let NERDTreeWinSize=30
 
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -118,6 +118,11 @@ inoremap <leader>n <esc>
 " q! : quit without save
 nnoremap <leader>x :wq!<cr>
 nnoremap <leader>q :qa!<cr>
+
+" 快速跳转括号
+nnoremap <leader>j %
+" 快速删除至行尾
+nnoremap <leader>d d$
 
 " 会话,和profile里的alias搭配使用,比如
 " alias vi="/usr/bin/vim"
