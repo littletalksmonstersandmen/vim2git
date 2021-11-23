@@ -13,24 +13,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'vim-airline/vim-airline'
-" 终端开启256色支持
-set t_Co=256 
-" 使用powerline打过补丁的字体
-let g:airline_powerline_fonts = 1
-
-" Display the statusline in the tabline (first top line)
-" let g:airline_statusline_ontop = 1
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
-" configure whether buffer numbers should be shown
-let g:airline#extensions#tabline#buffer_nr_show = 1
-" configure collapsing parent directories in buffer name
-let g:airline#extensions#tabline#fnamecollapse = 1
-" configure truncating non-active buffer names to specified length
-let g:airline#extensions#tabline#fnametruncate = 10
-
 nnoremap <leader>1 :b1<cr>
 nnoremap <leader>2 :b2<cr>
 nnoremap <leader>3 :b3<cr>
@@ -62,7 +44,12 @@ let Tlist_WinWidt = 25
 Plugin 'The-NERD-tree'
 "NERDTree 配置:F2快捷键显示当前目录树
 nnoremap <F8> :NERDTreeToggle<CR>
-let NERDTreeWinSize=30
+"以下三行保证自动打开NERDTree后焦点在右侧文件窗口而非NERDTree窗口
+autocmd VimEnter * NERDTree
+wincmd w
+autocmd VimEnter * wincmd w
+let NERDTreeWinSize=25
+let g:NERDTreeHidden=0
 
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -128,6 +115,8 @@ nnoremap <leader>d d$
 " alias vi="/usr/bin/vim"
 " alias vis="/usr/bin/vim -S ~/.vim/yanjc.session"
 nnoremap <leader>mks :mksession! ~/.vim/yanjc.session<cr>
+
+autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 " plugin ctags
 set tags=tags
