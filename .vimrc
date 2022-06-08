@@ -31,8 +31,8 @@ Plugin 'taglist.vim'
 nnoremap <F9>  :TlistToggle<CR>
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 " 在启动VIM后，自动打开taglist窗口
-let Tlist_Auto_Open = 0                  
-let Tlist_Use_Left_Window = 1
+let Tlist_Auto_Open = 1                  
+let Tlist_Use_Right_Window = 1
 " 只显示当前文件的tag
 let Tlist_Show_One_File = 1
 " 同时显示多个文件的tag，非当前文件的tag会折叠起来
@@ -119,7 +119,13 @@ nnoremap <leader>mks :mksession! ~/.vim/yanjc.session<cr>
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 " plugin ctags
+" Ctrl+]直接跳转到第一个functag处
+" g]不跳转，列出有多少个functags可选
+" gCtrl+]一般同g]，但如果functag只有一个，则直接跳转过去
+" :tp(tp助记字：tagspreview)
+" :tn(tn助记字：tagsnext)
+" Ctrl+T返回查找或跳转
 set tags=tags
-set tags+=/www/wwwroot/tags
+set tags+=
 set autochdir
-nnoremap <silent> <leader>; <C-]>
+nnoremap <silent> <leader>; g<C-]>
